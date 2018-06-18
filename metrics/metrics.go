@@ -3,13 +3,14 @@ package metrics
 import (
 	"errors"
 	"fmt"
+	"os"
+	"time"
+
+	"github.com/gin-gonic/gin"
 	"github.com/mcmeli/logging/format"
 	"github.com/mercadolibre/go-meli-toolkit/gingonic/mlhandlers"
 	"github.com/mercadolibre/go-meli-toolkit/godog"
 	"github.com/newrelic/go-agent"
-	"gopkg.in/gin-gonic/gin.v1"
-	"os"
-	"time"
 )
 
 type Metric struct {
