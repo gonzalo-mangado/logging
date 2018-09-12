@@ -169,7 +169,7 @@ func (trx *Transaction) End() {
 }
 
 type Segment struct {
-	nrSeg newrelic.Segment
+	nrSeg *newrelic.Segment
 }
 
 func NullSegment() *Segment {
@@ -177,7 +177,9 @@ func NullSegment() *Segment {
 }
 
 func (seg *Segment) End() {
-	seg.nrSeg.End()
+	if seg.nrSeg != nil {
+		seg.nrSeg.End()
+	}
 }
 
 // Middleware to use with New Relic
