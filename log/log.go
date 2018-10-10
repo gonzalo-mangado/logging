@@ -16,6 +16,7 @@ const (
 	WARN    = 2
 	ERROR   = 4
 	CRITIC  = 4
+	FATAL   = 4
 	NONE    = 100
 )
 
@@ -26,6 +27,7 @@ var levelNames = map[string]int{
 	"WARN":   WARN,
 	"ERROR":  ERROR,
 	"CRITIC": CRITIC,
+	"FATAL":  FATAL,
 	"NONE":   NONE}
 
 var Level = NONE
@@ -74,6 +76,13 @@ func (context logContext) Errorf(format string, a ...interface{}) error {
 		context.Log("error", fmt.Sprintf("%s", err))
 	}
 	return err
+}
+
+func (context logContext) Fatalf(format string, a ...interface{}) {
+	if Level <= FATAL {
+		context.Log("fatal", format, a)
+	}
+	os.Exit(1)
 }
 
 func (context logContext) Info(value interface{}, eventsAndTags ...interface{}) {
@@ -211,6 +220,10 @@ func Trace(value interface{}, eventsAndTags ...interface{}) {
 
 func Critic(value interface{}, eventsAndTags ...interface{}) {
 	defaultContext.Critic(value, eventsAndTags...)
+}
+
+func Fatalf(format string, a ...interface{}) {
+	defaultContext.Fatalf(format, a)
 }
 
 func Metric(value interface{}, eventsAndTags ...interface{}) {
