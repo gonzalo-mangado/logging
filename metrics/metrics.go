@@ -143,7 +143,7 @@ func InitNewRelic(debug bool, environment string, appName string, appKey string)
 // Helpers
 
 func MinutesSince(t time.Time) float64 {
-	return t.Sub(time.Now()).Minutes()
+	return time.Since(t).Minutes()
 }
 
 func ElapsedMilliseconds(t time.Time) float64 {
