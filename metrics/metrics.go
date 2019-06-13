@@ -10,7 +10,7 @@ import (
 	"github.com/mcmeli/logging/format"
 	"github.com/mercadolibre/go-meli-toolkit/gingonic/mlhandlers"
 	"github.com/mercadolibre/go-meli-toolkit/godog"
-	"github.com/newrelic/go-agent"
+	newrelic "github.com/newrelic/go-agent"
 )
 
 type Metric struct {
@@ -90,7 +90,10 @@ func Error(name string, tags ...Tags) Metrics {
 	return Metrics{[]Metric{{ERROR, name, float64(1), mergeTags(tags)}}}
 }
 
-// Returns a metric of type "compund"
+// Returns a metric of type "compound"
+func Compound(name string, value float64, tags ...Tags) Metrics {
+	return Metrics{[]Metric{{COMPOUND, name, value, mergeTags(tags)}}}
+}
 
 // Returns a metric of type "simple" with a value of 1
 func Counter(name string, tags ...Tags) Metrics {
