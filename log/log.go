@@ -5,7 +5,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/mcmeli/logging/metrics"
+	"github.com/gonzalo-mangado/logging/metrics"
 )
 
 const (

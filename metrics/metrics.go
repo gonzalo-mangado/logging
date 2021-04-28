@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/mcmeli/logging/format"
+	"github.com/gonzalo-mangado/logging/format"
 	"github.com/mercadolibre/go-meli-toolkit/gingonic/mlhandlers"
 	"github.com/mercadolibre/go-meli-toolkit/godog"
 	newrelic "github.com/newrelic/go-agent"
